@@ -1,0 +1,7 @@
+{
+  "name": "Expensor",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
