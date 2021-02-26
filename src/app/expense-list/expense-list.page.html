@@ -1,0 +1,61 @@
+<ion-content fullscreen >
+  <!-- Name and Top Section -->
+  <div class="top-section">
+    <div class="name">
+      <h1 style="font-size: 1.6em;">{{username}}</h1>
+      <p>Expenses History</p>
+    </div>
+    <ion-fab horizontal="end">
+      <ion-fab-button (click)="gotoExpenseAdd()">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </div>
+  <!-- Bottom Tab Section -->
+  <ion-segment (ionChange)="segmentChanged($event)" [(ngModel)]="selectedWay">
+    <ion-segment-button value="Daily">
+      <ion-label>Day</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="Weekly">
+      <ion-label>Week</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="Monthly">
+      <ion-label>Month</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <!-- List Header Section -->
+  <div class="list-title-section">
+    <ion-label color="light">
+      <h2>{{selectedWay | titlecase}} Expenses</h2>
+    </ion-label>
+  </div>
+
+  <!-- List Section -->
+  <div class="list-section">
+    <div *ngFor="let data of listOfExpenses">
+      <ion-item-sliding>
+        <ion-item-options side="start">
+          <ion-item-option (click)="edit(data.id.value)" color="secondary">Edit</ion-item-option>
+        </ion-item-options>
+    
+        <ion-item>
+          <ion-label  *ngIf="selectedWay=='Daily'"><h2>{{data.name}}</h2></ion-label>
+          <ion-label  *ngIf="selectedWay=='Weekly'"><h2>{{data.name}}</h2><p>{{data.date | date:'EEEE'}}</p></ion-label>
+          <ion-label  *ngIf="selectedWay=='Monthly'"><h2>{{data.name}}</h2><p>{{data.date | date:'MMMM'}} {{data.date | date:'dd'}}</p></ion-label>
+          <ion-label style="text-align: end;">Rs. {{data.amount}}</ion-label>
+        </ion-item>
+    
+        <ion-item-options side="end">
+          <ion-item-option (click)="presentAlertConfirm(data.id)" color="danger">Delete</ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </div>
+  </div>
+  <!-- Total Section -->
+  <div class="total-section">
+    <ion-label color="light" style="display: flex;justify-content: space-around;">
+      <h2>TOTAL EXPENSE</h2>
+      <h1>Rs. {{totalPrice}}</h1>
+    </ion-label>
+  </div>
+</ion-content>

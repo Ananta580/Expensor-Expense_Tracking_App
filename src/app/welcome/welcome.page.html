@@ -1,0 +1,28 @@
+<ion-app>
+  <ion-content fullscreen class="ion-padding" scroll-y="false">
+    <ion-slides pager="true" [options]="slideOpts">
+
+      <ion-slide>
+        <div class="slide">
+          <img src="../../assets/slide-1.png"/>
+          <h2>HELLO STRANGER</h2>
+          <p>The <b>Expensor</b> is my first ever launched app in app store,which generally keep track of expenses.</p>
+        </div>
+      </ion-slide>
+
+      <ion-slide>
+        <img src="../../assets/slide-2.png"/>
+        <h2>What is Expensor?</h2>
+        <p><b>Expensor</b> is a expense tracker app ,Offering a clean and intuitive interface, the application makes it super easy and fun for you to track expenses.</p>
+      </ion-slide>
+
+      <ion-slide>
+        <img src="../../assets/slide-3.png"/>
+        <h2>Good to go?</h2>
+        <ion-input [(ngModel)]="name" placeholder="Your Name" class="name-input"></ion-input>
+        <p><b>Note : </b>I will never share your personal info to other user.</p>
+        <ion-button shape="round" (click)="gotoMainPage()">Continue <ion-icon name="chevron-forward-outline"></ion-icon></ion-button>
+      </ion-slide>
+    </ion-slides>
+  </ion-content>
+</ion-app>

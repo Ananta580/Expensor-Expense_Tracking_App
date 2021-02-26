@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="top-section">
+    <div class="name">
+      <h1 style="font-size: 1.6em;" *ngIf="expenseId=='null'">New Expense</h1>
+        <h1 style="font-size: 1.6em;" *ngIf="expenseId!='null'">Edit Expense</h1>
+      <p>Name , Amount , Date</p>
+    </div>
+  </div>
+  <ion-item >
+      <ion-label position="floating">Your Expense</ion-label>
+      <ion-input [(ngModel)]="name" placeholder="Name your Expense"></ion-input>
+    </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Expend Amount</ion-label>
+    <ion-input [(ngModel)]="amount" placeholder="Amount you Spent" type="number"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Please Select Date</ion-label>
+    <ion-datetime [(ngModel)]="date" max="{{this.maxDate | date:'y'}}-{{this.maxDate | date:'MM'}}-{{this.maxDate | date:'dd'}}"></ion-datetime>
+  </ion-item>
+  
+  <div class="button-add" *ngIf="expenseId=='null'" (click)="AddExpense()">Add Expense</div>
+  <div class="button-add" *ngIf="expenseId!='null'" (click)="AddExpense()">Save Edit</div>
+  <div class="area" >
+    <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+    </ul>
+</div >
+  <div style="bottom: 0;position: fixed;width: 100%;">
+    <ion-label><p style="text-align: center;">Powered by <a href="https://ananta-poudel.com.np/">Ananta_Poudel</a></p></ion-label>
+  </div>
+</ion-content>
